@@ -49,6 +49,10 @@ func (m *Memtable) Get(key string) (sl.Entry, error) {
 	return m.data.Get(key)
 }
 
+func (m *Memtable) Serialize() map[string]sl.Entry {
+	return m.data.ToMap()
+}
+
 func (m *Memtable) Update(key string, value []byte) (sl.Entry, error) {
 	e, err := m.data.Get(key)
 	if err != nil {
